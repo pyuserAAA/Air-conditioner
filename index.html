@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="瑞丰空调维修有限公司 — 专注大型空调维修20年，为工厂、商场、酒店、医院等提供中央空调、工业冷水机组、多联机等制冷设备维修保养服务。">
+<title>瑞丰空调维修有限公司 — 专业大型空调维修服务</title>
+<style>
+/* ============================================================
+   CSS RESET & VARIABLES
+   ============================================================ */
+:root {
+  --primary: #0d2137;
+  --primary-light: #1a3a5c;
+  --primary-mid: #234b75;
+  --accent: #d4942b;
+  --accent-hover: #e8a840;
+  --white: #ffffff;
+  --gray-50: #f7f8fa;
+  --gray-100: #eef0f4;
+  --gray-200: #dde1e7;
+  --gray-300: #bcc3ce;
+  --gray-600: #5f6b7a;
+  --gray-800: #2d3748;
+  --text: #1a1f2e;
+  --text-light: #5f6b7a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --transition: .3s cubic-bezier(.4,0,.2,1);
+  --max-width: 1200px;
+  --nav-height: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+/* Section titles */
+.section-header { text-align: center; margin-bottom: 56px; }
+.section-header h2 {
+  font-size: 2.2rem; font-weight: 700; color: var(--primary);
+  margin-bottom: 12px; letter-spacing: .5px;
+}
+.section-header .divider {
+  width: 60px; height: 4px; background: var(--accent);
+  margin: 0 auto 16px; border-radius: 2px;
+}
+.section-header p { color: var(--text-light); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+section { padding: 90px 0; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(13,33,55,.96); backdrop-filter: blur(12px);
+  height: var(--nav-height); border-bottom: 1px solid rgba(255,255,255,.08);
+  transition: var(--transition);
+}
+.nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.25); }
+
+.nav-inner {
+  max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between; height: 100%;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo .logo-icon {
+  width: 44px; height: 44px; background: var(--accent); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  color: var(--white); flex-shrink: 0;
+}
+.nav-logo .logo-text { color: var(--white); font-size: 1.25rem; font-weight: 700; white-space: nowrap; letter-spacing: 1px; }
+
+.nav-links { display: flex; gap: 8px; }
+.nav-links a {
+  color: rgba(255,255,255,.78); padding: 8px 18px; border-radius: var(--radius-sm);
+  font-size: .95rem; font-weight: 500; transition: var(--transition); letter-spacing: .3px;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,.12); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 8px; background: none; border: none;
+}
+.hamburger span {
+  display: block; width: 26px; height: 2.5px; background: var(--white);
+  border-radius: 3px; transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed; top: var(--nav-height); left: 0; right: 0;
+    background: var(--primary); flex-direction: column; padding: 16px 24px;
+    gap: 4px; transform: translateY(-120%); transition: var(--transition);
+    box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .hamburger { display: flex; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a1c2e 40%, #122e4a 100%);
+  position: relative; overflow: hidden; text-align: center; padding: 120px 24px 80px;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%23ffffff" stop-opacity=".03"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></linearGradient></defs><rect fill="url(%23g)" width="1440" height="900"/><circle cx="1200" cy="200" r="350" fill="%23ffffff" opacity=".015"/><circle cx="200" cy="700" r="280" fill="%23ffffff" opacity=".01"/></svg>');
+  background-size: cover;
+}
+.hero .pattern {
+  position: absolute; inset: 0; opacity: .04;
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero-badge {
+  display: inline-block; background: rgba(212,148,43,.18); color: var(--accent);
+  padding: 6px 20px; border-radius: 50px; font-size: .9rem; font-weight: 600;
+  letter-spacing: 2px; margin-bottom: 28px; border: 1px solid rgba(212,148,43,.25);
+}
+.hero h1 {
+  color: var(--white); font-size: 3.2rem; font-weight: 800; line-height: 1.25;
+  margin-bottom: 20px; letter-spacing: 1px;
+}
+.hero h1 .highlight { color: var(--accent); }
+.hero p {
+  color: rgba(255,255,255,.7); font-size: 1.18rem; margin-bottom: 40px; line-height: 1.8;
+}
+
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
+  border-radius: 50px; font-size: 1rem; font-weight: 600; letter-spacing: .5px;
+  cursor: pointer; border: none; transition: var(--transition);
+}
+.btn-primary { background: var(--accent); color: var(--white); }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,148,43,.35); }
+.btn-outline {
+  background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.35);
+}
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.06); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 48px; justify-content: center; margin-top: 56px; flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num { font-size: 2.6rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+.hero-stat .label { color: rgba(255,255,255,.55); font-size: .9rem; margin-top: 4px; }
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .hero-stats { gap: 28px; }
+  .hero-stat .num { font-size: 2rem; }
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+#services { background: var(--gray-50); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+@media (max-width: 992px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+.service-card {
+  background: var(--white); border-radius: var(--radius); padding: 36px 28px;
+  box-shadow: var(--shadow-sm); transition: var(--transition);
+  border: 1px solid var(--gray-100); text-align: center;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.service-card .icon {
+  width: 68px; height: 68px; margin: 0 auto 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 1.9rem;
+  background: rgba(13,33,55,.06); color: var(--primary-light);
+}
+.service-card:nth-child(1) .icon { background: #e8f0fe; color: #1967d2; }
+.service-card:nth-child(2) .icon { background: #e6f4ea; color: #137333; }
+.service-card:nth-child(3) .icon { background: #fce8e6; color: #c5221f; }
+.service-card:nth-child(4) .icon { background: #fef7e0; color: #b06000; }
+.service-card:nth-child(5) .icon { background: #e8f5e9; color: #1b7a2b; }
+.service-card:nth-child(6) .icon { background: #f3e8fd; color: #7627bb; }
+
+.service-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 10px; font-weight: 700; }
+.service-card p { color: var(--text-light); font-size: .92rem; line-height: 1.7; }
+
+/* ============================================================
+   CASES
+   ============================================================ */
+.cases-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+@media (max-width: 992px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .cases-grid { grid-template-columns: 1fr; } }
+
+.case-card {
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
+  transition: var(--transition); border: 1px solid var(--gray-100); background: var(--white);
+}
+.case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.case-img {
+  height: 180px; display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; color: rgba(255,255,255,.6);
+}
+.case-img-1 { background: linear-gradient(135deg, #1a3a5c, #234b75); }
+.case-img-2 { background: linear-gradient(135deg, #234b75, #2d5f8a); }
+.case-img-3 { background: linear-gradient(135deg, #1a3a5c, #1e4a6b); }
+.case-img-4 { background: linear-gradient(135deg, #234b75, #1d4460); }
+.case-img-5 { background: linear-gradient(135deg, #1a3a5c, #255078); }
+.case-img-6 { background: linear-gradient(135deg, #234b75, #1a3a5c); }
+
+.case-body { padding: 20px 24px 24px; }
+.case-body .tag {
+  display: inline-block; background: var(--gray-100); color: var(--primary-light);
+  padding: 3px 12px; border-radius: 50px; font-size: .8rem; font-weight: 600; margin-bottom: 10px;
+}
+.case-body h3 { font-size: 1.08rem; color: var(--primary); margin-bottom: 6px; font-weight: 700; }
+.case-body p { color: var(--text-light); font-size: .9rem; line-height: 1.6; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+#about { background: var(--white); }
+.about-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 768px) { .about-wrapper { grid-template-columns: 1fr; gap: 40px; } }
+
+.about-text h2 { font-size: 2rem; color: var(--primary); margin-bottom: 20px; font-weight: 700; }
+.about-text p { color: var(--text-light); margin-bottom: 16px; line-height: 1.8; font-size: 1rem; }
+
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+.about-feature {
+  display: flex; align-items: flex-start; gap: 12px; padding: 16px;
+  border-radius: var(--radius-sm); background: var(--gray-50);
+}
+.about-feature .af-icon {
+  width: 40px; height: 40px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+  background: var(--primary-light); color: var(--accent);
+}
+.about-feature h4 { font-size: .95rem; color: var(--primary); margin-bottom: 2px; }
+.about-feature p { font-size: .82rem; color: var(--text-light); margin: 0; }
+
+.about-stats {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+}
+.about-stat {
+  background: var(--primary); color: var(--white); padding: 32px 24px;
+  border-radius: var(--radius); text-align: center;
+}
+.about-stat .big { font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+.about-stat .lbl { font-size: .9rem; color: rgba(255,255,255,.65); margin-top: 4px; }
+
+/* ============================================================
+   CONTACT & BOOKING
+   ============================================================ */
+#contact { background: var(--gray-50); }
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; }
+@media (max-width: 768px) { .contact-wrapper { grid-template-columns: 1fr; } }
+
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-info h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 8px; }
+.contact-info .ci-desc { color: var(--text-light); margin-bottom: 8px; }
+
+.ci-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px; background: var(--white); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+.ci-item .ci-icon {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  background: var(--primary-light); color: var(--accent);
+}
+.ci-item h4 { font-size: .95rem; color: var(--primary); margin-bottom: 2px; }
+.ci-item p { font-size: .88rem; color: var(--text-light); }
+
+.contact-form {
+  background: var(--white); padding: 36px; border-radius: var(--radius);
+  box-shadow: var(--shadow); border: 1px solid var(--gray-100);
+}
+.contact-form h3 { font-size: 1.35rem; color: var(--primary); margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-group label { font-size: .88rem; font-weight: 600; color: var(--text); }
+.form-group input, .form-group select, .form-group textarea {
+  padding: 12px 16px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
+  font-size: .95rem; font-family: inherit; transition: var(--transition);
+  outline: none; background: var(--gray-50);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--primary-mid); background: var(--white); box-shadow: 0 0 0 3px rgba(35,75,117,.1);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group .error-msg { font-size: .8rem; color: #c5221f; display: none; }
+.form-group.error input, .form-group.error select, .form-group.error textarea { border-color: #c5221f; }
+.form-group.error .error-msg { display: block; }
+
+.form-submit {
+  width: 100%; padding: 14px; background: var(--accent); color: var(--white);
+  border: none; border-radius: var(--radius-sm); font-size: 1.05rem; font-weight: 700;
+  cursor: pointer; letter-spacing: 1px; transition: var(--transition);
+}
+.form-submit:hover { background: var(--accent-hover); }
+.form-success {
+  display: none; text-align: center; padding: 40px 20px; color: #137333;
+}
+.form-success .success-icon { font-size: 3rem; margin-bottom: 12px; }
+.form-success h4 { font-size: 1.2rem; margin-bottom: 6px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--primary); color: rgba(255,255,255,.6); padding: 40px 0 24px;
+}
+.footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.08); flex-wrap: wrap; gap: 16px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand span { color: var(--white); font-weight: 700; font-size: 1.05rem; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { transition: var(--transition); font-size: .9rem; }
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom { text-align: center; padding-top: 20px; font-size: .85rem; }
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+.back-to-top {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent); color: var(--white); border: none;
+  font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden;
+  transition: var(--transition); box-shadow: var(--shadow);
+  z-index: 900; display: flex; align-items: center; justify-content: center;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+/* ============================================================
+   ANIMATIONS (Intersection Observer)
+   ============================================================ */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* Delay utilities */
+.delay-1 { transition-delay: .1s; }
+.delay-2 { transition-delay: .2s; }
+.delay-3 { transition-delay: .3s; }
+
+/* ============================================================
+   MOBILE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 768px) {
+  section { padding: 60px 0; }
+  .section-header h2 { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+  NAVIGATION
+  ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-icon">❄</div>
+      <span class="logo-text">瑞丰空调维修</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#services">业务范围</a></li>
+      <li><a href="#cases">成功案例</a></li>
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================
+  HERO
+  ============================================================ -->
+<section class="hero" id="home">
+  <div class="pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge fade-up">&#x1F3C6; 大型空调维修专家</div>
+    <h1 class="fade-up delay-1">专注<span class="highlight">大型空调维修</span>20年<br>值得信赖的制冷设备服务伙伴</h1>
+    <p class="fade-up delay-2">为工厂、商场、酒店、医院、写字楼、数据中心提供一站式空调维修保养解决方案<br>24小时响应 · 技术过硬 · 配件齐全 · 售后无忧</p>
+    <div class="hero-btns fade-up delay-3">
+      <a href="#contact" class="btn btn-primary">&#x1F4DE; 立即咨询</a>
+      <a href="#booking" class="btn btn-outline">&#x1F527; 在线报修</a>
+    </div>
+    <div class="hero-stats fade-up delay-3">
+      <div class="hero-stat"><div class="num">20+</div><div class="label">年行业经验</div></div>
+      <div class="hero-stat"><div class="num">500+</div><div class="label">服务企业客户</div></div>
+      <div class="hero-stat"><div class="num">3000+</div><div class="label">维修设备台数</div></div>
+      <div class="hero-stat"><div class="num">98%</div><div class="label">客户满意度</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  SERVICES
+  ============================================================ -->
+<section id="services">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>业务范围</h2>
+      <div class="divider"></div>
+      <p>覆盖各类大型空调与制冷设备，提供全方位维修保养服务</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-up delay-1">
+        <div class="icon">&#x1F3E2;</div>
+        <h3>中央空调系统维修保养</h3>
+        <p>螺杆机、离心机、风冷热泵等大型中央空调机组的日常维保、故障诊断与应急抢修，保障设备稳定运行。</p>
+      </div>
+
+      <div class="service-card fade-up delay-1">
+        <div class="icon">&#x1F3ED;</div>
+        <h3>工业冷水机组维修</h3>
+        <p>为制造工厂、化工企业提供工业冷冻站、工艺冷水系统的全面维修服务，包括压缩机大修、管路清洗、制冷剂回收等。</p>
+      </div>
+
+      <div class="service-card fade-up delay-2">
+        <div class="icon">&#x1F3EC;</div>
+        <h3>商用多联机系统维修</h3>
+        <p>VRV/VRF多联机空调系统故障排查、主板维修、冷媒泄漏检测与补充，服务覆盖各大品牌（大金、日立、美的、格力等）。</p>
+      </div>
+
+      <div class="service-card fade-up delay-2">
+        <div class="icon">&#x1F4BB;</div>
+        <h3>精密空调 / 恒温恒湿设备</h3>
+        <p>数据中心机房精密空调、实验室恒温恒湿设备的专业维保，确保温度湿度精准控制，保障关键设备运行环境。</p>
+      </div>
+
+      <div class="service-card fade-up delay-3">
+        <div class="icon">&#x1F50B;</div>
+        <h3>制冷设备节能改造</h3>
+        <p>提供老旧空调系统的节能诊断与改造方案，通过变频改造、智能控制升级等手段，帮助客户降低30%以上的能耗成本。</p>
+      </div>
+
+      <div class="service-card fade-up delay-3">
+        <div class="icon">&#x1F6A8;</div>
+        <h3>24小时紧急抢修服务</h3>
+        <p>全年无休、全天候待命，接到报修后市区1小时内到达现场，快速定位故障、紧急恢复运行，最大限度减少停机损失。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  CASES
+  ============================================================ -->
+<section id="cases">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>成功案例</h2>
+      <div class="divider"></div>
+      <p>服务覆盖多个行业，用实力赢得客户信赖</p>
+    </div>
+
+    <div class="cases-grid">
+
+      <div class="case-card fade-up delay-1">
+        <div class="case-img case-img-1">&#x1F3ED;</div>
+        <div class="case-body">
+          <span class="tag">制造业</span>
+          <h3>某大型汽车零部件工厂</h3>
+          <p>完成3台800冷吨离心式冷水机组大修，恢复制冷效率至95%以上，为客户节省换新成本超200万元。</p>
+        </div>
+      </div>
+
+      <div class="case-card fade-up delay-1">
+        <div class="case-img case-img-2">&#x1F3EC;</div>
+        <div class="case-body">
+          <span class="tag">商业地产</span>
+          <h3>某知名购物中心</h3>
+          <p>承接中央空调年度维保合同，管理12台风冷热泵机组、50+台空气处理机组，保障全年制冷/制热无缝切换。</p>
+        </div>
+      </div>
+
+      <div class="case-card fade-up delay-2">
+        <div class="case-img case-img-3">&#x1F3E8;</div>
+        <div class="case-body">
+          <span class="tag">酒店行业</span>
+          <h3>某五星级连锁酒店</h3>
+          <p>为3家门店提供空调系统全面改造，引入智能温控系统，年节能率达35%，获客户续约及推荐。</p>
+        </div>
+      </div>
+
+      <div class="case-card fade-up delay-2">
+        <div class="case-img case-img-4">&#x1F3E5;</div>
+        <div class="case-body">
+          <span class="tag">医疗机构</span>
+          <h3>某三甲综合医院</h3>
+          <p>完成手术室、ICU洁净空调系统紧急升级，满足院感控制标准，项目在14天内完工，获院方高度评价。</p>
+        </div>
+      </div>
+
+      <div class="case-card fade-up delay-3">
+        <div class="case-img case-img-5">&#x1F3E2;</div>
+        <div class="case-body">
+          <span class="tag">写字楼</span>
+          <h3>某CBD甲级写字楼群</h3>
+          <p>持续5年提供多联机维保服务，管理超过200台室内机、40台室外机，年均故障率控制在1%以下。</p>
+        </div>
+      </div>
+
+      <div class="case-card fade-up delay-3">
+        <div class="case-img case-img-6">&#x1F4BB;</div>
+        <div class="case-body">
+          <span class="tag">数据中心</span>
+          <h3>某大型互联网企业数据中心</h3>
+          <p>承担12台精密空调7×24小时维保，PUE值优化至1.3以下，保障服务器全年零宕机。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  ABOUT
+  ============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>关于我们</h2>
+      <div class="divider"></div>
+      <p>20年专注大型空调维修，用专业守护每一度清凉</p>
+    </div>
+    <div class="about-wrapper">
+      <div class="about-text fade-up delay-1">
+        <h2>瑞丰空调维修有限公司</h2>
+        <p>公司成立于2006年，总部位于天津市，是一家专业从事大型空调与制冷设备维修保养的技术服务型企业。公司拥有一支由资深制冷工程师和维修技师组成的专业团队，持有国家制冷设备维修安装企业资质。</p>
+        <p>我们与国内外主流空调品牌（开利、特灵、约克、麦克维尔、大金、日立、格力、美的等）保持紧密技术合作，配件渠道畅通，能够快速响应各类品牌设备的维修需求。</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="af-icon">&#x1F468;&#x200D;&#x1F527;</div>
+            <div><h4>资深技术团队</h4><p>10年以上经验工程师占比60%</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="af-icon">&#x1F6A8;</div>
+            <div><h4>快速响应</h4><p>市区1小时到达，郊区2小时到达</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="af-icon">&#x1F50C;</div>
+            <div><h4>正品配件保障</h4><p>原厂配件+常用件库存，维修不等待</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="af-icon">&#x1F4CB;</div>
+            <div><h4>售后质保承诺</h4><p>维修项目提供6-12个月质保期</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-stats fade-up delay-2">
+        <div class="about-stat"><div class="big">20+</div><div class="lbl">年行业深耕</div></div>
+        <div class="about-stat"><div class="big">500+</div><div class="lbl">长期合作企业客户</div></div>
+        <div class="about-stat"><div class="big">50+</div><div class="lbl">专业技术人员</div></div>
+        <div class="about-stat"><div class="big">京津冀</div><div class="lbl">核心服务区域</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  CONTACT & BOOKING
+  ============================================================ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>联系我们</h2>
+      <div class="divider"></div>
+      <p>如需空调维修服务，请随时联系我们</p>
+    </div>
+    <div class="contact-wrapper">
+      <!-- Contact info -->
+      <div class="contact-info fade-up delay-1">
+        <h3>&#x1F4DE; 联系方式</h3>
+        <p class="ci-desc">欢迎来电咨询或预约上门勘测，我们将为您提供专业的技术方案和报价。</p>
+
+        <div class="ci-item">
+          <div class="ci-icon">&#x1F4DE;</div>
+          <div>
+            <h4>服务热线</h4>
+            <p>022-8888-6666</p>
+            <p>138-0000-8888（24小时紧急抢修）</p>
+          </div>
+        </div>
+
+        <div class="ci-item">
+          <div class="ci-icon">&#x1F4E7;</div>
+          <div>
+            <h4>电子邮箱</h4>
+            <p>service@ruifeng-ac.com</p>
+            <p>info@ruifeng-ac.com</p>
+          </div>
+        </div>
+
+        <div class="ci-item">
+          <div class="ci-icon">&#x1F4CD;</div>
+          <div>
+            <h4>公司地址</h4>
+            <p>天津市滨海新区开发区第五大街68号</p>
+          </div>
+        </div>
+
+        <div class="ci-item">
+          <div class="ci-icon">&#x1F556;</div>
+          <div>
+            <h4>服务时间</h4>
+            <p>周一至周五：8:00 - 18:00</p>
+            <p>周六：8:00 - 12:00</p>
+            <p>紧急服务：7×24小时全天候</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking form -->
+      <div class="contact-form fade-up delay-2" id="booking">
+        <h3>&#x1F527; 在线报修 / 预约</h3>
+        <form id="bookingForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">联系人 <span style="color:#c5221f">*</span></label>
+              <input type="text" id="name" placeholder="请输入您的姓名" required>
+              <span class="error-msg">请输入联系人姓名</span>
+            </div>
+            <div class="form-group">
+              <label for="phone">联系电话 <span style="color:#c5221f">*</span></label>
+              <input type="tel" id="phone" placeholder="请输入手机号码" required>
+              <span class="error-msg">请输入有效的手机号码</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">公司名称 <span style="color:#c5221f">*</span></label>
+              <input type="text" id="company" placeholder="请输入贵公司名称" required>
+              <span class="error-msg">请输入公司名称</span>
+            </div>
+            <div class="form-group">
+              <label for="deviceType">设备类型</label>
+              <select id="deviceType">
+                <option value="">请选择设备类型</option>
+                <option value="中央空调">中央空调</option>
+                <option value="工业冷水机组">工业冷水机组</option>
+                <option value="多联机系统">多联机系统</option>
+                <option value="精密空调">精密空调</option>
+                <option value="空气处理机组">空气处理机组</option>
+                <option value="其他设备">其他设备</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">设备地址 <span style="color:#c5221f">*</span></label>
+            <input type="text" id="address" placeholder="请输入设备所在地址" required>
+            <span class="error-msg">请输入设备所在地址</span>
+          </div>
+          <div class="form-group">
+            <label for="description">故障描述 <span style="color:#c5221f">*</span></label>
+            <textarea id="description" placeholder="请描述设备故障现象、设备品牌型号、故障发生时间等信息，越详细越好" required></textarea>
+            <span class="error-msg">请描述故障情况</span>
+          </div>
+          <button type="submit" class="form-submit">&#x1F4E8; 提交报修申请</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">&#x2705;</div>
+          <h4>报修申请已提交成功！</h4>
+          <p>我们的技术工程师将在30分钟内与您联系，请保持电话畅通。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  FOOTER
+  ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="width:32px;height:32px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;">❄</div>
+        <span>瑞丰空调维修有限公司</span>
+      </div>
+      <div class="footer-links">
+        <a href="#home">首页</a>
+        <a href="#services">业务范围</a>
+        <a href="#cases">成功案例</a>
+        <a href="#about">关于我们</a>
+        <a href="#contact">联系我们</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 瑞丰空调维修有限公司 版权所有 | 津ICP备XXXXXXXX号-1</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="返回顶部" title="返回顶部">&#x2191;</button>
+
+<!-- ============================================================
+  SCRIPTS
+  ============================================================ -->
+<script>
+/* ── Mobile hamburger menu ── */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+// Close menu on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+/* ── Sticky nav shadow ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ── Back to top button ── */
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 500);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ── Scroll animation (Intersection Observer) ── */
+const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+/* ── Active nav link highlight ── */
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (window.scrollY >= top) current = section.getAttribute('id');
+  });
+  navAnchors.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+/* ── Form validation ── */
+const form = document.getElementById('bookingForm');
+const formSuccess = document.getElementById('formSuccess');
+
+function showError(el, show) {
+  el.closest('.form-group').classList.toggle('error', show);
+}
+
+function validatePhone(phone) {
+  return /^1[3-9]\d{9}$/.test(phone.replace(/\s/g, ''));
+}
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  let hasError = false;
+
+  // Validate each required field
+  const fields = [
+    { id: 'name', test: v => v.trim() !== '' },
+    { id: 'phone', test: v => validatePhone(v) },
+    { id: 'company', test: v => v.trim() !== '' },
+    { id: 'address', test: v => v.trim() !== '' },
+    { id: 'description', test: v => v.trim() !== '' },
+  ];
+
+  fields.forEach(({ id, test }) => {
+    const el = document.getElementById(id);
+    const ok = test(el.value);
+    showError(el, !ok);
+    if (!ok) hasError = true;
+  });
+
+  if (hasError) {
+    // Scroll to first error
+    const firstError = form.querySelector('.form-group.error input, .form-group.error textarea, .form-group.error select');
+    if (firstError) firstError.focus();
+    return;
+  }
+
+  // Simulate submission
+  form.style.display = 'none';
+  formSuccess.style.display = 'block';
+
+  // Log form data (replace with actual API call)
+  console.log('报修申请提交:', {
+    name: document.getElementById('name').value,
+    phone: document.getElementById('phone').value,
+    company: document.getElementById('company').value,
+    deviceType: document.getElementById('deviceType').value,
+    address: document.getElementById('address').value,
+    description: document.getElementById('description').value,
+    time: new Date().toISOString(),
+  });
+
+  // Reset after 5 seconds (demo)
+  setTimeout(() => {
+    form.reset();
+    form.style.display = 'block';
+    formSuccess.style.display = 'none';
+  }, 5000);
+});
+
+// Real-time validation on blur
+['name', 'phone', 'company', 'address', 'description'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('blur', function() {
+    if (this.value.trim() === '' && this.required) {
+      showError(this, true);
+    } else if (id === 'phone' && this.value.trim() !== '') {
+      showError(this, !validatePhone(this.value));
+    } else {
+      showError(this, false);
+    }
+  });
+  // Clear error on input
+  el.addEventListener('input', function() {
+    showError(this, false);
+  });
+});
+</script>
+
+</body>
+</html>
